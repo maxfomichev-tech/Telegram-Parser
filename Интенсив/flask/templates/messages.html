@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Все сообщения - Telegram Messages Dashboard{% endblock %}
+
+{% block content %}
+<h1>Все сообщения</h1>
+
+{% if messages %}
+<table class="messages-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Chat ID</th>
+            <th>Отправитель</th>
+            <th>Текст</th>
+            <th>Дата/Время</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for msg in messages %}
+        <tr>
+            <td>{{ msg.id }}</td>
+            <td>{{ msg.chat_id }}</td>
+            <td>{{ msg.sender }}</td>
+            <td class="text-cell" title="{{ msg.text }}">{{ msg.text }}</td>
+            <td>{{ msg.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="no-data">
+    <p>Сообщений пока нет в базе данных.</p>
+</div>
+{% endif %}
+{% endblock %}
+

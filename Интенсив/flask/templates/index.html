@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Статистика - Telegram Messages Dashboard{% endblock %}
+
+{% block content %}
+<h1>Статистика сообщений</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Всего сообщений</h3>
+        <div class="value">{{ stats.total_messages }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Проанализировано</h3>
+        <div class="value">{{ stats.analyzed_messages }}</div>
+    </div>
+    
+    <div class="stat-card">
+        <h3>Последняя выжимка</h3>
+        <div class="value" style="font-size: 1.2em;">
+            {% if stats.last_extraction %}
+                {{ stats.last_extraction.strftime('%d.%m.%Y %H:%M') }}
+            {% else %}
+                Нет данных
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
